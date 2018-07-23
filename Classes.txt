@@ -1,0 +1,188 @@
+# creating a Dog class
+class Dog():         # define a class and class name is Capitalize
+    """ A simple Attempt to model a Dog class """       # docstring
+    def __init__(self,name,age):    # special method class constructor / initializer. here self parameter is come before other param.
+        self.name = name                     # variables that are acessible through instance like these are atributes.
+        self.age = age
+    
+    def sit(self):                       # other methods
+        """Simulate a Dog sitting in respond to a command """
+        print(self.name.title()+ " is now sitting")
+   
+    def roll_over(self):
+        """ Simulate a Dog roll over in respond to a command """
+        print(self.name.title() + " is now rolled over!")
+    
+ # making an instance from a class    
+my_dog = Dog("Willie", 6)                       
+print("My dog's name is " + my_dog.name.title() + ".")
+
+# Accessing attributes of an instance
+my_dog.name                         #instance_name.attribute
+
+# Calling methods after create an instance from a class
+my_dog.sit()          # instance_name.method_name
+
+# Creating multiple instances from a class
+
+my_dog = Dog("Willie", 6)          # instance 1
+your_dog = Dog("Harry", 7)         # instance 2
+
+print("\n My dog's name is " + my_dog.name.title() + ".")
+print("My dog's age is " + str(my_dog.age) + ".")
+my_dog.sit()                    # calling method
+
+print("\n Your dog's name is " + your_dog.name.title() + ".")
+print("Your dog's age is " + str(your_dog.age) + ".")
+your_dog.roll_over()
+
+# A car class
+class Car():
+    """ A simple attempt to represent a car """
+    def __init__(self,year,model,make):
+        """ Initialize attributes to describe a car """
+        self.year = year
+        self.model = model
+        self.make = make
+        self.odometer_reading = 0       #Setting default value     self.attribute_name = default_value 
+        
+    def read_odometer(self):
+        """ Print a statement showing cars millege. """
+        print("This car has " + str(self.odometer_reading) + " miles on it")
+        
+    def get_descriptive_name(self):
+        """ Return a neatly formatted decriptive name """
+        long_name = str(self.year) + ' ' + self.model + ' ' + self.make
+        return long_name.title()
+    
+my_new_car = Car(2018, 'audi', 'a4')           # instance
+print(my_new_car.get_descriptive_name())
+
+# Modifying attribute value
+my_new_car.odometer_reading = 23     #instance_name.attribute_name = modify value
+my_new_car.read_odometer()  
+    
+# A car class   # Modifying Attributes value through method
+class Car():
+    """ A simple attempt to represent a car """
+    def __init__(self,year,model,make):
+        """ Initialize attributes to describe a car """
+        self.year = year
+        self.model = model
+        self.make = make
+        self.odometer_reading = 0       #Setting default value     self.attribute_name = default_value 
+        
+    def read_odometer(self):
+        """ Print a ststement showing cars millege. """
+        print("This car has " + str(self.odometer_reading) + " miles on it")    
+        
+    def update_odometer(self, mileage):
+        """ Set the odometer reading to the given value """
+        self.odometer_reading= mileage
+        
+        
+    def get_descriptive_name(self):
+        """ Return a neatly formatted decriptive name """
+        long_name = str(self.year) + ' ' + self.model + ' ' + self.make
+        return long_name.title()
+    
+my_new_car = Car(2018, 'audi', 'a4')           # instance
+print(my_new_car.get_descriptive_name())
+
+# Modifying attribute value
+my_new_car.update_odometer(23)     #instance_name.attribute_name = modify value
+my_new_car.read_odometer()
+
+
+# python library 
+from collections import OrderedDict    # import OrderedDict class from Collections module 
+
+favourite_languages = OrderedDict()            #instance hy OrderedDict class ka
+
+favourite_languages['jen'] = 'python'
+favourite_languages['jim'] = 'ruby'
+favourite_languages['harry'] = 'Java'
+favourite_languages['john'] = 'Python'
+
+for name, language in favourite_languages.items():   # items return a list of dictionary in key value pair
+    print(name.title() + "'s favourite_language is" + language.title() + ".")
+
+# Parent Child Class Inheritance
+class Car():           # Parent class
+    """ Simple attempt to represent a car """
+    def __init__(self,model,make,year):  # Special class
+        """ Initialize attributes of car """
+        self.model = model
+        self.make = make
+        self.year = year
+     
+    def get_descriptive_name(self):      # method
+        long_name = str(self.year) +' '+ self.model + ' ' + self.make 
+        return long_name.title()
+
+my_new_car = Car('Audi','A4',2018)     #instance of (Parent) Car class 
+print(my_new_car.get_descriptive_name())     # instance_name.method_name   / calling method
+
+
+# Child Class
+
+class ElectricCar(Car):     # craeting child class
+    
+    def __init__(self,model,make,year):     
+        """ Initialize attributes of parent car """
+        super().__init__(model,make,year)   # connection b/w parent and child class super()
+    
+my_tesla = ElectricCar('tesla','model S','2017')      # instance of Child class
+print(my_tesla.get_descriptive_name())
+
+# Importing class
+class Car():           # Parent class
+    """ Simple attempt to represent a car """
+    def __init__(self,model,make,year):  # Special class
+        """ Initialize attributes of car """
+        self.model = model
+        self.make = make
+        self.year = year
+     
+    def get_descriptive_name(self):      # method
+        long_name = str(self.year) +' '+ self.model + ' ' + self.make 
+        return long_name.title()
+
+my_new_car = Car('Audi','A4',2018)     #instance of (Parent) Car class 
+print(my_new_car.get_descriptive_name())     # instance_name.method_name   / calling method
+
+
+from car import Car         # import Car class from "car module"
+from car import Car, ElectricCar         # import multiple classes from "car module"
+
+
+#import an Entire module
+my_beetle = car.Car('Volkswgane','beetle',1990)       # from Car module
+my_beetle = car.ElectricCar('tesla','a3',1990)      
+
+# import All classes from module
+
+from module_name import *
+
+my_new_car = Car('Civic', 'Prosmatic', 2015)
+print(my_new_car.get_descriptive_name())
+
+
+
+      
+
+
+    
+
+
+
+  
+    
+    
+
+
+
+    
+    
+
+
